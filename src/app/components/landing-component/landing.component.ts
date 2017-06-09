@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService} from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'landing-component',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class LandingComponent {
   title = 'Welcome to Todolist! You are not signed in';
+
+  constructor(private authService: AuthenticationService, private router: Router) { }
+
+  logIn(){
+    this.authService.authenticate();
+    this.router.navigate(['/dash']);
+  }
 }
