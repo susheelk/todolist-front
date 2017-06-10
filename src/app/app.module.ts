@@ -12,6 +12,7 @@ import { ContentComponent }   from './components/content-component/content.compo
 import { GroupsComponent }   from './components/groups-component/groups.component';
 
 import { AuthenticationService } from './services/authentication.service';
+import { CookieService } from './services/cookie.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AuthenticationService } from './services/authentication.service';
     HttpModule,
     MainRoutingModule
   ],
-  providers: [],
+  providers: [AuthenticationService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

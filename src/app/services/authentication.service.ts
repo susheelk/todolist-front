@@ -5,20 +5,23 @@ import 'rxjs/add/operator/delay';
 
 import { Injectable } from '@angular/core';
 
+import {CookieService} from './cookie.service';
+
 
 @Injectable()
 export class AuthenticationService {
 
     private authenticated: boolean;
 
-    constructor() {
+    constructor(private cookie: CookieService) {
         this.authenticated = false;
     }
 
     authenticate(): Observable<boolean> {
         //Mock login
         console.log('Authentication initiated');
-        return Observable.of(true).delay(500).do(resp=> this.authenticated = true);
+        this.cookie.removeCookie('sds');
+        return Observable.of(true).delay(500).do(resp=> document.cookie="loggedIn=true");
     }
 
     // authenticate(): boolean {
@@ -31,7 +34,7 @@ export class AuthenticationService {
     }
 
     isAuthenticated(): boolean {
-        return this.authenticated;
+        return document.cookie=="loggedIn=true";
     }
 
 }
