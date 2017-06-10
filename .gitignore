@@ -44,3 +44,7 @@ Thumbs.db
 /src/polyfills.js
 
 *.json
+
+.editorconfig
+karma.conf.js
+protractor.conf.js

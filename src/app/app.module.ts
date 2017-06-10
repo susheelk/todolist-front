@@ -9,6 +9,7 @@ import { AppComponent }       from './components/app-component/app.component';
 import { LandingComponent }   from './components/landing-component/landing.component';
 import { DashboardComponent } from './components/dashboard-component/dashboard.component';
 import { ContentComponent }   from './components/content-component/content.component';
+import { GroupsComponent }   from './components/groups-component/groups.component';
 
 import { AuthenticationService } from './services/authentication.service';
 
@@ -17,7 +18,8 @@ import { AuthenticationService } from './services/authentication.service';
     AppComponent,
     ContentComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,10 @@ export class LandingComponent {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   logIn(){
-    this.authService.authenticate();
-    this.router.navigate(['/dash']);
+    this.authService.authenticate().subscribe(success => {
+      if (success) {
+        this.router.navigate(['/dash']);
+      }
+    });
   }
 }

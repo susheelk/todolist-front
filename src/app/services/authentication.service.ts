@@ -15,16 +15,16 @@ export class AuthenticationService {
         this.authenticated = false;
     }
 
-    // authenticate(): Observable<boolean> {
-    //     //Mock login
-    //     console.log('Authentication initiated');
-    //     return Observable.of(true).delay(500).do(resp=> this.authenticated = true);
-    // }
-
-    authenticate(): boolean {
-        this.authenticated= true;
-        return true;
+    authenticate(): Observable<boolean> {
+        //Mock login
+        console.log('Authentication initiated');
+        return Observable.of(true).delay(500).do(resp=> this.authenticated = true);
     }
+
+    // authenticate(): boolean {
+    //     this.authenticated= true;
+    //     return true;
+    // }
 
     deauthenticate(): void {
         this.authenticated = false;
