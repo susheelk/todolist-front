@@ -9,16 +9,23 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CookieService {
 
-    putCookie(id: string, value: string) {
-        document.cookie="loggedIn=true";
+    putCookie(key: string, value: string) {
+        document.cookie = key + '=' + value;
     }
 
-    removeCookie(id: string) {
-        
+    removeCookie(key: string) {
+        this.putCookie(key, '');
     }
 
-    retrieveCookie(id: string) {
-
+    retrieveCookie(key: string): string {
+        const raw = document.cookie.split(';');
+        for(let val of raw) {
+            const cookie = val.split('=');
+            if (cookie[0] == key) {
+              return cookie[1];
+            }
+        }
+        return null;
     }
 
 }

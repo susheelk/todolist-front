@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService} from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import {CookieService} from "../../services/cookie.service";
 
 @Component({
   selector: 'landing-component',
@@ -10,13 +11,19 @@ import { Router } from '@angular/router';
 export class LandingComponent {
   title = 'Welcome to Todolist! You are not signed in';
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router, private cookieService: CookieService) { }
 
   logIn(){
-    this.authService.authenticate().subscribe(success => {
-      if (success) {
-        this.router.navigate(['/dash']);
-      }
-    });
+      this.authService.authenticate((session => {
+          console.log('landing component succeeded');
+          Object.keys(session).forEach((key) => {
+            this.cookieService.putCookie(key, session[key]);
+          });
+          this.router.navigate(['/dash']);
+
+      }),
+      fail => {
+        console.log('landing component failed');
+      });
   }
 }

@@ -11,7 +11,7 @@ import { AuthenticationGuard }  from './services/authentication-guard';
 import { AuthenticationService }  from './services/authentication.service';
 
 const routes: Routes = [
-    {path: 'landing', component: LandingComponent},
+    {path: 'landing', component: LandingComponent, canActivate: [AuthenticationGuard]},
     {path: 'dash', component: DashboardComponent, canActivate: [AuthenticationGuard]},
     {path: 'groups', component: GroupsComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
 

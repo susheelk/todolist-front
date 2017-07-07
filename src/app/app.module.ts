@@ -4,6 +4,7 @@ import { FormsModule }        from '@angular/forms';
 import { HttpModule }         from '@angular/http';
 
 import { MainRoutingModule }  from './main-routing';
+import { FacebookModule, FacebookService }     from 'ngx-facebook';
 
 import { AppComponent }       from './components/app-component/app.component';
 import { LandingComponent }   from './components/landing-component/landing.component';
@@ -13,6 +14,8 @@ import { GroupsComponent }   from './components/groups-component/groups.componen
 
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from './services/cookie.service';
+import { HttpService } from './services/http.service';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { CookieService } from './services/cookie.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MainRoutingModule
+    MainRoutingModule,
+    FacebookModule
   ],
-  providers: [AuthenticationService, CookieService],
+  providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
