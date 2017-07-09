@@ -23,6 +23,7 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [AuthenticationGuard, AuthenticationService]
+    
 
 })
 export class MainRoutingModule { }

@@ -11,6 +11,7 @@ import { LandingComponent }   from './components/landing-component/landing.compo
 import { DashboardComponent } from './components/dashboard-component/dashboard.component';
 import { ContentComponent }   from './components/content-component/content.component';
 import { GroupsComponent }   from './components/groups-component/groups.component';
+import { NavComponent }   from './components/nav-component/nav.component';
 
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from './services/cookie.service';
@@ -23,7 +24,8 @@ import { HttpService } from './services/http.service';
     ContentComponent,
     LandingComponent,
     DashboardComponent,
-    GroupsComponent
+    GroupsComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

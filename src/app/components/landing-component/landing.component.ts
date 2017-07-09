@@ -9,21 +9,11 @@ import {CookieService} from "../../services/cookie.service";
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
-  title = 'Welcome to Todolist! You are not signed in';
+    title = 'Welcome to Todolist! You are not signed in';
 
-  constructor(private authService: AuthenticationService, private router: Router, private cookieService: CookieService) { }
+    constructor(private authService: AuthenticationService, private router: Router, private cookieService: CookieService) { }
 
-  logIn(){
-      this.authService.authenticate((session => {
-          console.log('landing component succeeded');
-          Object.keys(session).forEach((key) => {
-            this.cookieService.putCookie(key, session[key]);
-          });
-          this.router.navigate(['/dash']);
-
-      }),
-      fail => {
-        console.log('landing component failed');
-      });
-  }
+    logIn(){
+        this.authService.authenticate();
+    }
 }

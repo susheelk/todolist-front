@@ -1,7 +1,34 @@
-
-export class User {
+export class Identifiable {
     id: string;
+
+    // static fromJson<T>(obj: T, json: object): T {
+    //     Object.keys(json).forEach((key) => {
+    //         obj[key] = json[key];
+    //     });
+    //
+    //     return obj;
+    // }
+
+    constructor(obj: object) {
+        this.fromObject(obj);
+    }
+
+    fromObject(obj: object) {
+        if (obj != null) {
+            Object.keys(obj).forEach((key) => {
+              this[key] = obj[key];
+            });
+        }
+    }
+}
+
+export class User extends Identifiable{
     name: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    picUrl: string;
+    pictureUrl: string;
+    facebookId: string;
+
+
 }

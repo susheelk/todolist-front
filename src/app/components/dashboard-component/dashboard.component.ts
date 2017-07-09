@@ -2,6 +2,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { HttpService } from '../../services/http.service';
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
+import {User} from "../../model";
 
 
 @Component({
@@ -12,20 +13,21 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
-  constructor(private http: HttpService){}
+    private user: User = new User(null);
 
-  tryPost(): void {
-    // this.http.post("", {user: {
-    //   'username': 'a',
-    //   'password': 'a',
-    // }}).subscribe();
-    // this.http.post('login', {
-    //   user: {
-    //     'username': 'a',
-    //     'password': 'a'
-    //   },
-    //   stayLogged: true
-    // }).subscribe((success)=>console.log(success), (error)=>{console.log(error)});
-    console.log("tred");
-  }
+    constructor(private http: HttpService, private auth: AuthenticationService) {
+
+    }
+
+    ngOnInit() {
+        this.auth.user$.subscribe((user: User) => {
+          console.log('does this even run?');
+          this.user = user;
+        });
+        this.auth.updateUser();
+    }
+
+
+
+
 }
