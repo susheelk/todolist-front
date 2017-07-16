@@ -30,5 +30,4 @@ export class User extends Identifiable{
     pictureUrl: string;
     facebookId: string;
 
-
 }

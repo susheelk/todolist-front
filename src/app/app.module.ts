@@ -1,11 +1,14 @@
 import { BrowserModule }      from '@angular/platform-browser';
+
 import { NgModule }           from '@angular/core';
 import { FormsModule }        from '@angular/forms';
 import { HttpModule }         from '@angular/http';
 
-import { MainRoutingModule }  from './main-routing';
-import { FacebookModule, FacebookService }     from 'ngx-facebook';
+import { FacebookModule, FacebookService } from 'ngx-facebook';
+import { MaterializeModule } from 'angular2-materialize';
 
+
+import { MainRoutingModule }  from './main-routing';
 import { AppComponent }       from './components/app-component/app.component';
 import { LandingComponent }   from './components/landing-component/landing.component';
 import { DashboardComponent } from './components/dashboard-component/dashboard.component';
@@ -32,7 +35,8 @@ import { HttpService } from './services/http.service';
     FormsModule,
     HttpModule,
     MainRoutingModule,
-    FacebookModule
+    FacebookModule,
+    MaterializeModule
   ],
   providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService],
   bootstrap: [AppComponent]

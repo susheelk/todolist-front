@@ -19,29 +19,29 @@ export class AuthenticationGuard implements CanActivate {
       // this.router.navigate(['/landing']);
       // return false;
 
-
-      return this.authService.isAuthenticated().map((value) => {
+        this.authService.updateUser();
+        return this.authService.isAuthenticated().map((value) => {
             let bool = value['status']['state'];
             if (state.url === '/landing') {
-              console.log(bool);
-              if (bool) {
-                this.router.navigate(['/dash']);
-                return false;
-              }
-              return true;
+                console.log(bool);
+                if (bool) {
+                    this.router.navigate(['/dash']);
+                    return false;
+                }
+                return true;
             }
 
-            if(bool) {
-              return true;
+            if (bool) {
+                return true;
             }
 
             if (state.url !== '/landing') {
-              this.router.navigate(['/landing']);
+                this.router.navigate(['/landing']);
             }
 
             return false;
 
-        });
+          });
 
 
     }

@@ -1,1 +1,40 @@
-<h1>TODOLIST</h1>
+<nav id="navigation-component" *ngIf="this.loggedIn">
+
+  <!--Title bar-->
+  <div id="title-bar" class="nav-title">
+    <a materialize="sideNav" [materializeParams]="[{closeOnClick: true}]" href="javascript:void(0)" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <span id="title" class="">
+      <a>TODOLIST - </a>
+      <a id="view-title">{{getRouteTitle()}}</a>
+    </span>
+  </div>
+
+  <!--Navbar-->
+  <ul id="slide-out" class="side-nav fixed">
+    <div class="user-view">
+      <div id="user-data">
+        <a id="name" style="color: black" class="">{{user.name}}</a>
+        <a id="email" style="color: black" class="">{{user.email || 'address@domain.com'}}</a>
+      </div>
+
+      <a id="user-dropdown-button" materialize="dropdown" [materializeParams]="[{gutter: -90, constrainWidth: 100, belowOrigin: true}]" class="dropdown-button waves-effect btn" data-activates="user-dropdown">
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <ul class="dropdown-content" id="user-dropdown">
+        <li><a><i class="material-icons">exit_to_app</i>Logout</a></li>
+      </ul>
+    </div>
+
+    <li class="divider"></li>
+    <li [ngClass]="{'grey lighten-2': isRoute('/dash') || isRoute('/')}">
+      <a class="waves-effect" [routerLink]="['/dash']"><i class="material-icons">dashboard</i>Dashboard</a>
+    </li>
+    <li [ngClass]="{'grey lighten-2': isRoute('/groups')}">
+      <a class="waves-effect" [routerLink]="['/groups']"><i class="material-icons">people</i>Groups</a>
+    </li>
+
+  </ul>
+<!---->
+</nav>
+
+

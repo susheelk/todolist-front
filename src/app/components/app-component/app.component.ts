@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {CookieService} from '../../services/cookie.service';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['../../../styles.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [CookieService]
 })
 export class AppComponent {
@@ -12,3 +14,4 @@ export class AppComponent {
 
   constructor(cs: CookieService){}
 }
+

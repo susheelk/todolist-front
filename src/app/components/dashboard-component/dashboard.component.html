@@ -1,6 +1,9 @@
-<h3>Dashboard (You are logged in!)</h3>
-<h4>{{user.name}}</h4>
-<a routerLink="/groups">Groups</a>
-<a (click) = "test()">Test</a>
-<a href="javascript:void(0)" routerLink="/landing">Land</a>
+<div id="dashboard-component" *ngIf="user != null">
+  <h3>Dashboard (You are logged in!)</h3>
+  <h4>{{user.name}}</h4>
+  <a routerLink="/groups">Groups</a>
+  <a (click) = "test()">Test</a>
+  <a href="javascript:void(0)" routerLink="/landing">Land</a>
+
+</div>
 

@@ -13,18 +13,16 @@ import {User} from "../../model";
 })
 export class DashboardComponent {
 
-    private user: User = new User(null);
+    private user: User = new User({'name': ''});
 
     constructor(private http: HttpService, private auth: AuthenticationService) {
-
+        
     }
 
     ngOnInit() {
         this.auth.user$.subscribe((user: User) => {
-          console.log('does this even run?');
-          this.user = user;
+            this.user = user;
         });
-        this.auth.updateUser();
     }
 
 
