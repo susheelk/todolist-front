@@ -29,7 +29,7 @@ const initParams = {
 export class AuthenticationService {
 
     private userChangeSource = new BehaviorSubject<User>(null);
-    user$ = this.userChangeSource.asObservable();//
+    user$ = this.userChangeSource.asObservable();
 
     constructor(private cookie: CookieService, private http: HttpService, private router: Router) {
         FB.init(initParams);
@@ -53,7 +53,7 @@ export class AuthenticationService {
             } else {
                 console.log('access denied');
             }
-        });
+        }, {scope: 'email'});
     }
 
     setUser(user: User) {
@@ -61,49 +61,14 @@ export class AuthenticationService {
     }
 
     updateUser() {
-        this.http.req('get', '/sessions', {cmd: 'userInf', loginToken: this.cookie.retrieveCookie('loginToken'), facebookTokenKey: this.cookie.retrieveCookie('facebookTokenKey')})
+        // this.http.req('get', '/sessions', {cmd: 'userInf', loginToken: this.cookie.retrieveCookie('loginToken'), facebookTokenKey: this.cookie.retrieveCookie('facebookTokenKey')})
+        this.http.req('get', '/sessions', {cmd: 'userInf'})
             .subscribe((data) => {
                 console.log(Object.keys(data['data']));
                 let user: User = new User(data['data']);
                 this.setUser(user);
             });
     }
-
-
-
-
-    // // Try to use callbacks later
-    // authenticate(){
-    //     FB.login((resp) => {
-    //         console.log(resp);
-    //         if (resp.status === 'connected') {
-    //             this.http.req('post', 'login', resp.authResponse,
-    //               (success) => {
-    //                 console.log('success!');
-    //                 console.log(success);
-    //             },
-    //             (error) => {
-    //                 console.log('ERROR');
-    //             });
-    //         } else {
-    //             console.log('access denied');
-    //         }
-    //     }, {scope: 'email'}) ;
-    // }
-
-
-
-    // authenticate(): Observable<boolean> {
-    //     //Mock login
-    //     console.log('Authentication initiated');
-    //     this.cookie.removeCookie('sds');
-    //     return Observable.of(true).delay(500).do(resp=> document.cookie='loggedIn=true');
-    // }
-
-    // authenticate(): boolean {
-    //     this.authenticated= true;
-    //     return true;
-    // }
 
     deauthenticate(): void {
 

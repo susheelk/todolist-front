@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams, Response } from '@angular/http';
 
 import { environment } from '../../environments/environment';
+import {CookieService} from "./cookie.service";
 
 // TODO push back success/fail here
 
@@ -17,18 +18,14 @@ export class HttpService {
 
     private baseUrl: string;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private cookie: CookieService) {
         this.baseUrl = environment.server;
         console.log(this.baseUrl);
     }
 
-    // TODO reinstate
-    // req(method: string, path: string, data: Object, success?: (data) => any, fail?: (error)=> any) {
-    //     (method == 'get' ? this.get(path, data) : this.post(path, data)).subscribe(success, fail);
-    // }
 
     req(method: string, path: string, data: Object) {
-        return (method == 'get' ? this.get(path, data) : this.post(path, data));
+        return (method == 'get' ? this.get(path, this.sign(data)) : this.post(path, this.sign(data)));
     }
 
 
@@ -44,6 +41,12 @@ export class HttpService {
           return JSON.parse(res['_body']);
         });
 
+    }
+
+    private sign(data: Object) {
+        data['loginToken'] = this.cookie.retrieveCookie('loginToken');
+        data['facebookTokenKey'] = this.cookie.retrieveCookie('facebookTokenKey');
+        return data;
     }
 
 

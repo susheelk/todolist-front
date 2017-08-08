@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
         this.currentRoute = this.router.url;
         this.auth.user$.subscribe((user: User) => {
             this.user = user;
+
             this.loggedIn = user != null;
         });
         //this.auth.updateUser();
@@ -42,6 +43,7 @@ export class NavComponent implements OnInit {
     isRoute(url: string) {
         return this.currentRoute == url;
     }
+
 
     getRouteTitle(): string {
         return (routeTitles[this.currentRoute]).toString();
