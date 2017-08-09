@@ -3,13 +3,13 @@ $roboto-font-path: "../node_modules/materialize-css/dist/fonts/roboto/";
 @import "../node_modules/materialize-css/sass/materialize";
 
 header, main, footer, body {
-  padding-left: 315px;
+    padding-left: 315px;
 }
 
 @media only screen and (max-width : 992px) {
-  header, main, footer, body {
-    padding-left: 0;
-  }
+    header, main, footer, body {
+        padding-left: 0;
+    }
 }
 
 button {
@@ -18,91 +18,95 @@ button {
 
 
 #landing-component {
-  position: absolute;
-  left: 0;
-  right:0;
-  top:0;
-  bottom: 0px;
-  background: $primary-color;
-  color: whitesmoke;
-  align: center;
-  @extend .center-align;
-  padding: 5%;
+    position: absolute;
+    left: 0;
+    right:0;
+    top:0;
+    bottom: 0px;
+    background: $primary-color;
+    color: whitesmoke;
+    align: center;
+    @extend .center-align;
+    padding: 5%;
 
-  #content-card {
-    @extend .card-panel, .center-align;
-    padding-bottom: 5%;
-    margin: auto;
-    color: $primary-color;
-    @media #{$information-phone} {
-      width: 95%;
+    #content-card {
+        @extend .card-panel, .center-align;
+        padding-bottom: 5%;
+        margin: auto;
+        color: $primary-color;
+        @media #{$information-phone} {
+          width: 95%;
+        }
+
+        #credits {
+            font-style: italic;
+            margin-top: -25px;
+            padding-bottom: 25px;
+        }
+
     }
 
-    #credits {
-      font-style: italic;
-      margin-top: -25px;
-      padding-bottom: 25px;
-    }
-
-  }
-
-  #login-button {
+    #login-button {
     //@extend .white, .indigo-text, .text-darken-4;
 
-    i {
-      @extend .left;
-      padding-top:10px;;
+        i {
+            @extend .left;
+            padding-top:10px;;
+        }
     }
-  }
 }
 
 #navigation-component {
-  margin-top: -35px;
-  margin-left: -15px;
-  width: 105%;
-  padding: 10px;
-  height: 100px;
+    margin-top: -35px;
+    margin-left: -15px;
+    width: 105%;
+    padding: 10px;
+    height: 100px;
 
-  #slide-out {
+    #slide-out {
 
-  }
-
-  #view-title {
-    color: gainsboro;
-    white-space: nowrap;
-
-  }
-
-  .user-view {;
-
-    #user-data {
-      margin-left: -15px;
-      #name {
-        @extend .name;
-        color: black;
-      }
-      #email {
-        @extend .email;
-      }
     }
 
-    #user-dropdown {
-      z-index: 5;
+    #view-title {
+        color: gainsboro;
+        white-space: nowrap;
     }
 
-    #user-dropdown-button {
-      @extend .btn-floating, .white, .z-depth-0;
-      i {
-        color: black;
-      }
-      position: absolute;
-      z-index: 5;
-      top: 60px;
-      right: 20px;
+    .user-view {
+        .profile-picture {
+            position: absolute;
+            margin-top: 25px;
+            margin-left: -15px;
+            border-radius: 50%;
+        }
+
+        #user-data {
+            margin-left: 30px;
+            margin-top: 28px;
+            #name {
+                @extend .name;
+                color: black;
+            }
+            #email {
+                @extend .email;
+            }
+        }
+
+        #user-dropdown {
+            z-index: 5;
+        }
+
+        #user-dropdown-button {
+            @extend .btn-floating, .white, .z-depth-0;
+            i {
+                color: black;
+            }
+            position: absolute;
+            z-index: 5;
+            top: 75px;
+            right: 0px;
+        }
     }
-  }
-
-
 
 }
 

@@ -29,10 +29,9 @@ export class NavComponent implements OnInit {
         this.currentRoute = this.router.url;
         this.auth.user$.subscribe((user: User) => {
             this.user = user;
-
             this.loggedIn = user != null;
         });
-        //this.auth.updateUser();
+
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
                 this.currentRoute = event.url;
