@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {GroupsService} from "../../services/groups.service";
+import {User} from "../../model";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'group',
@@ -6,5 +9,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent {
-  title = 'app works!';
+
+    private user: User = new User(null);
+
+    constructor(private groupsService: GroupsService, private auth: AuthenticationService) {
+        this.auth.user$.subscribe((user: User) => {
+            this.user = user;
+        });
+    }
+
+    onEnter(value: string) {
+        console.log(value);
+        this.groupsService.getFacebookGroup(value);
+    }
 }

@@ -31,3 +31,9 @@ export class User extends Identifiable{
     facebookId: string;
 
 }
+
+export class Group extends Identifiable {
+    facebookId: string;
+    name: string;
+    pictureUrl: string;
+}

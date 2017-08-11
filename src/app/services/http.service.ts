@@ -46,6 +46,7 @@ export class HttpService {
     private sign(data: Object) {
         data['loginToken'] = this.cookie.retrieveCookie('loginToken');
         data['facebookTokenKey'] = this.cookie.retrieveCookie('facebookTokenKey');
+        console.log(this.cookie.retrieveCookie('facebookTokenKey'));
         return data;
     }
 

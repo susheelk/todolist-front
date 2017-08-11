@@ -19,6 +19,7 @@ import { NavComponent }   from './components/nav-component/nav.component';
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from './services/cookie.service';
 import { HttpService } from './services/http.service';
+import {GroupsService} from "./services/groups.service";
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { HttpService } from './services/http.service';
     FacebookModule,
     MaterializeModule
   ],
-  providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService],
+  providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService, GroupsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
