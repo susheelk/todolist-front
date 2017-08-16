@@ -16,6 +16,9 @@ button {
   @extend .btn, .indigo, .darken-4;
 }
 
+.component {
+    @extend .container;
+}
 
 #landing-component {
     position: absolute;
@@ -108,5 +111,16 @@ button {
         }
     }
 
+}
+
+#groups-component {
+    .groups-row {
+        @extend .row;
+    }
+
+    .group-info-card {
+        @extend .card, .horizontal, .hoverable;
+        cursor: pointer;
+    }
 }
 

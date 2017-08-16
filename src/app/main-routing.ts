@@ -6,24 +6,28 @@ import { LandingComponent }   from './components/landing-component/landing.compo
 import { DashboardComponent } from './components/dashboard-component/dashboard.component';
 import { ContentComponent }   from './components/content-component/content.component';
 import { GroupsComponent }   from './components/groups-component/groups.component';
+import { GroupComponent }   from './components/group-component/group.component';
 
 import { AuthenticationGuard }  from './services/authentication-guard';
 import { AuthenticationService }  from './services/authentication.service';
 
 const routes: Routes = [
-    {path: 'landing', component: LandingComponent, canActivate: [AuthenticationGuard]},
-    {path: 'dash', component: DashboardComponent, canActivate: [AuthenticationGuard]},
-    {path: 'groups', component: GroupsComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
+    {path: 'landing',   component: LandingComponent,    canActivate: [AuthenticationGuard]},
+    {path: 'dash',      component: DashboardComponent,  canActivate: [AuthenticationGuard]},
+    {path: 'groups',    component: GroupsComponent,     pathMatch: 'full', canActivate: [AuthenticationGuard]},
 
-    {path: '', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
-    {path: '**', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
+    {path: 'groups/:id', component: GroupComponent,      canActivate: [AuthenticationGuard]},
+
+    {path: '',          component: DashboardComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
+    {path: '**',        component: DashboardComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [AuthenticationGuard, AuthenticationService]
-    
+
 
 })
 export class MainRoutingModule { }
+

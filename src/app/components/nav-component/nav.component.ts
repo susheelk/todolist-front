@@ -45,7 +45,12 @@ export class NavComponent implements OnInit {
 
 
     getRouteTitle(): string {
-        return (routeTitles[this.currentRoute]).toString();
+        try {
+            return ((routeTitles[this.currentRoute]).toString()) || '';
+        }
+        catch (e) {
+            return 'App';
+        }
     }
 
     navigate(): void {
@@ -56,3 +61,4 @@ export class NavComponent implements OnInit {
 
 
 }
+

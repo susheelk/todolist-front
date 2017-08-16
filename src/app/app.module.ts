@@ -14,6 +14,7 @@ import { LandingComponent }   from './components/landing-component/landing.compo
 import { DashboardComponent } from './components/dashboard-component/dashboard.component';
 import { ContentComponent }   from './components/content-component/content.component';
 import { GroupsComponent }   from './components/groups-component/groups.component';
+import { GroupComponent }   from './components/group-component/group.component';
 import { NavComponent }   from './components/nav-component/nav.component';
 
 import { AuthenticationService } from './services/authentication.service';
@@ -23,23 +24,26 @@ import {GroupsService} from "./services/groups.service";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContentComponent,
-    LandingComponent,
-    DashboardComponent,
-    GroupsComponent,
-    NavComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    MainRoutingModule,
-    FacebookModule,
-    MaterializeModule
-  ],
-  providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService, GroupsService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ContentComponent,
+        LandingComponent,
+        DashboardComponent,
+        GroupsComponent,
+        NavComponent,
+        GroupComponent
+    ],
+
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        MainRoutingModule,
+        FacebookModule,
+        MaterializeModule
+    ],
+
+    providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService, GroupsService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

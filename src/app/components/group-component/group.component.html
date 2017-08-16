@@ -1,0 +1,16 @@
+<div id="group-component"  *ngIf="group !== null">
+
+    <div id="title">
+        {{group.name}}
+    </div>
+    <li *ngFor="let member of group.members">
+        {{member.name}}
+    </li>
+
+</div>
+
+<div *ngIf="group === null">
+    <h1>Error 404</h1>
+    <h3>Group not found!</h3>
+</div>
+

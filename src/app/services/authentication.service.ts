@@ -75,8 +75,7 @@ export class AuthenticationService {
     }
 
     isAuthenticated(fail?: (error) => any): Observable<boolean> {
-        // session is null
-        // return this.http.req('get', '/sessions', {cmd: 'ping', loginToken: this.cookie.retrieveCookie('loginToken'), facebookTokenKey: this.cookie.retrieveCookie('facebookTokenKey')});
+
         return this.http.req('get', '/sessions', {cmd: 'ping'});
     }
 

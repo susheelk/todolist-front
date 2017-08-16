@@ -1,3 +1,22 @@
-<h3>Groups</h3>
-<a routerLink="/">Dash</a>
-<input #box (keyup.enter)="onEnter(box.value)">
+<div id="groups-component" class="container">
+
+    <div class="groups-row">
+        <div *ngFor="let group of joinedGroups">
+            <div class="group-info-card" (click)="goToGroup(group.id)">
+                <div class="card-image">
+                    <img src="{{group.pictureUrl}}">
+                </div>
+                <h5>{{group.name}}</h5>
+            </div>
+        </div>
+    </div>
+
+
+    <a routerLink="/">Dash</a>
+    <input #box (keyup.enter)="joinGroup(box.value)">
+</div>
+
+
+
+
+
