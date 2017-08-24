@@ -1,1 +1,1 @@
-#Frontend for Todolist App
+# Angular Web Client for Todolist

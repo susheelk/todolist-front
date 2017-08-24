@@ -4,12 +4,11 @@
         <a materialize="sideNav" [materializeParams]="[{closeOnClick: true}]" href="javascript:void(0)" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <span id="title" class="">
           <a>TODOLIST - </a>
-          <a id="view-title">{{getRouteTitle()}}</a>
+          <a behavior="scroll" id="view-title">{{routeTitle}}</a>
         </span>
     </div>
 
     <!--Navbar-->
-
     <ul id="slide-out" class="side-nav fixed">
         <div class="user-view">
             <img src="{{user.pictureUrl}}" class="profile-picture"/>
@@ -27,10 +26,10 @@
         </div>
 
         <li class="divider"></li>
-        <li [ngClass]="{'grey lighten-2': isRoute('/dash') || isRoute('/')}">
+        <li [ngClass]="{'grey lighten-2': isRoute('Dashboard') || isRoute('/')}">
             <a class="waves-effect" [routerLink]="['/dash']"><i class="material-icons">dashboard</i>Dashboard</a>
         </li>
-        <li [ngClass]="{'grey lighten-2': isRoute('/groups')}">
+        <li [ngClass]="{'grey lighten-2': isRoute('Groups')}">
             <a class="waves-effect" [routerLink]="['/groups']"><i class="material-icons">people</i>Groups</a>
         </li>
 

@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import { AuthenticationService} from '../../services/authentication.service';
+import { AuthenticationService} from '../../../services/authentication.service';
 import { Router } from '@angular/router';
-import {CookieService} from "../../services/cookie.service";
+import {CookieService} from "../../../services/cookie.service";
 
 declare var $: any;
 

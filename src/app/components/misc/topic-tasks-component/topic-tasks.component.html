@@ -1,0 +1,14 @@
+<div class="content tasks-container">
+    <h5>{{topic.name}}</h5>
+    <div class="divider"></div>
+
+    <ul class="tasks-list">
+
+    </ul>
+
+    <div class="input-field">
+        <i class="material-icons prefix">add</i>
+        <input #name (keyup.enter)="addTask(name.value); name.value=null" placeholder="Add Task to {{topic.name}}">
+    </div>
+
+</div>

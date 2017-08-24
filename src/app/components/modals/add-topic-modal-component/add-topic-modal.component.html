@@ -1,0 +1,29 @@
+<button class="waves-effect modal-trigger" (click)="open(); form.reset()">Add Topic</button>
+
+<div id="add-topic-modal" class="modal fixed-footer" materialize="modal" [materializeParams]="[{dismissable: true}]" [materializeActions]="modalActions">
+    <!--{{test()}}-->
+    <form #form="ngForm">
+        <div class="modal-content">
+            <h5>{{group.name}}</h5>
+            <h4>Add Topic</h4>
+            <br/>
+            <div class="input-field">
+                <input type="text" id="name" [(ngModel)]="toAdd.name" name="name" required data-error="required" #name="ngModel"/>
+                <label for="name">Topic Name</label>
+            </div>
+            <div class="input-field">
+                <!--<input id="date" type="date" [(ngModel)]="toAdd.startDate" (ngModelChange)="toAdd.startDate = $event" name="toAdd.startDate" required #date/>-->
+                <input id="date" type="date" [value]="toAdd.startDate | date:'yyyy-MM-dd'" (input)="toAdd.startDate = $event.target.value" required #date/>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-action modal-close waves-effect">Cancel</button>
+            <button class="modal-action waves-effect modal-close" type="submit" [class.disabled]="!name.valid" (click)="addTopic(); form.reset()">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+

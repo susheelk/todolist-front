@@ -36,4 +36,18 @@ export class Group extends Identifiable {
     facebookId: string;
     name: string;
     pictureUrl: string;
+    topics: Topic[];
+}
+
+export class Topic extends Identifiable {
+    name: string;
+    groupId: string;
+    startDate: Date;
+    completed: boolean;
+}
+
+export class Task extends Identifiable {
+    name: string;
+    dueDate: string;
+    completed: boolean;
 }

@@ -1,4 +1,4 @@
-import { BrowserModule }      from '@angular/platform-browser';
+import {BrowserModule, Title}      from '@angular/platform-browser';
 
 import { NgModule }           from '@angular/core';
 import { FormsModule }        from '@angular/forms';
@@ -10,19 +10,24 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { MainRoutingModule }  from './main-routing';
 import { AppComponent }       from './components/app-component/app.component';
-import { LandingComponent }   from './components/landing-component/landing.component';
-import { DashboardComponent } from './components/dashboard-component/dashboard.component';
+import { LandingComponent }   from './components/pages/landing-component/landing.component';
+import { DashboardComponent } from './components/pages/dashboard-component/dashboard.component';
 import { ContentComponent }   from './components/content-component/content.component';
-import { GroupsComponent }   from './components/groups-component/groups.component';
-import { GroupComponent }   from './components/group-component/group.component';
+import { GroupsComponent }   from './components/pages/groups-component/groups.component';
+import { GroupComponent }   from './components/pages/group-component/group.component';
 import { NavComponent }   from './components/nav-component/nav.component';
 
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from './services/cookie.service';
 import { HttpService } from './services/http.service';
 import {GroupsService} from "./services/groups.service";
+import {TitleService} from "./services/title.service";
+import {ModalsModule} from "./components/modals/modals.module";
+import {MiscComponentsModule} from "./components/misc/misc-components.module";
 
-
+/**
+ * Use only for major pages. Minor components get their own modules
+ */
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,7 +36,7 @@ import {GroupsService} from "./services/groups.service";
         DashboardComponent,
         GroupsComponent,
         NavComponent,
-        GroupComponent
+        GroupComponent,
     ],
 
     imports: [
@@ -40,10 +45,22 @@ import {GroupsService} from "./services/groups.service";
         HttpModule,
         MainRoutingModule,
         FacebookModule,
-        MaterializeModule
+        MaterializeModule,
+
+        ModalsModule,
+        MiscComponentsModule
     ],
 
-    providers: [AuthenticationService, CookieService, HttpModule, HttpService, FacebookService, GroupsService],
+    providers: [
+        AuthenticationService,
+        CookieService,
+        HttpModule,
+        HttpService,
+        FacebookService,
+        GroupsService,
+        Title,
+        TitleService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

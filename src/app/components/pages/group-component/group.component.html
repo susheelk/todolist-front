@@ -1,0 +1,52 @@
+<div id="group-component"  *ngIf="group !== null" class="component">
+
+    <div id="header">
+        <img src="{{group.pictureUrl}}">
+        {{group.name}}
+    </div>
+
+    <div id="details">
+        <div id="members-list-container">
+            <div id="members-title">
+                <h5>Members</h5>
+            </div>
+            <li class="divider"></li>
+            <div id="list-container">
+                <ul id="list">
+                    <li *ngFor="let user of group.members">
+                        <div id="image-container">
+                            <img src="{{user.pictureUrl}}">
+                        </div>
+                        <span class="name">{{user.name}}</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="right-container">
+            <div id="description" class="content">
+                <p>Group Description goes here</p>
+            </div>
+
+            <div>
+                <div class="" *ngFor="let topic of group.topics; let i = index">
+                    <topic-tasks [(topic)]="group.topics[i]"></topic-tasks>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div *ngIf="group.id == null">
+    <h1>Error 404</h1>
+    <h3>Group not found!</h3>
+</div>
+
+<add-topic-modal [(group)]="group" ></add-topic-modal>
+
+
+

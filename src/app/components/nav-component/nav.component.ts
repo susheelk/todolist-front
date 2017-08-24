@@ -4,11 +4,14 @@ import {User} from "../../model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {audit} from "rxjs/operator/audit";
 import {Router, NavigationStart} from "@angular/router";
+import {TitleService} from "../../services/title.service";
+import {Title} from "@angular/platform-browser";
 
 const routeTitles = {
     '/dash': 'Dashboard',
     '/': 'Dashboard',
-    '/groups': 'Groups'
+    '/groups': 'Groups',
+    '/landing': 'Welcome'
 };
 
 @Component({
@@ -21,12 +24,15 @@ export class NavComponent implements OnInit {
 
     private user: User = new User(null);
     private loggedIn: boolean = true;
-    private currentRoute: string;
+    private routeTitle: string;
 
-    constructor(private auth: AuthenticationService, private router: Router){}
+    constructor(
+        private auth: AuthenticationService,
+        private router: Router,
+        private ts: TitleService
+    ){}
 
     ngOnInit() {
-        this.currentRoute = this.router.url;
         this.auth.user$.subscribe((user: User) => {
             this.user = user;
             this.loggedIn = user != null;
@@ -34,22 +40,25 @@ export class NavComponent implements OnInit {
 
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
-                this.currentRoute = event.url;
+                this.ts.setTitle(this.getRouteTitle(event.url));
             }
+            this.ts.title$.subscribe((title) => {
+                this.routeTitle = title.toString();
+            });
         });
     }
 
     isRoute(url: string) {
-        return this.currentRoute == url;
+        return this.routeTitle == url;
     }
 
 
-    getRouteTitle(): string {
+    getRouteTitle(url: string): string {
         try {
-            return ((routeTitles[this.currentRoute]).toString()) || '';
+            return ((routeTitles[url]).toString()) || '';
         }
         catch (e) {
-            return 'App';
+            return '';
         }
     }
 

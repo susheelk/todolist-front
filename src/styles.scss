@@ -16,8 +16,23 @@ button {
   @extend .btn, .indigo, .darken-4;
 }
 
+.fixed-footer {
+    .modal-footer {
+        button {
+            @extend .btn-flat, .white;
+        }
+    }
+}
+
+
 .component {
-    @extend .container;
+    //@extend .container;
+    padding: 5%;
+//
+}
+
+.ng-invalid.ng-dirty {
+    @extend .invalid;
 }
 
 #landing-component {
@@ -70,8 +85,14 @@ button {
 
     }
 
+    #title-bar {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
     #view-title {
         color: gainsboro;
+        //white-space: nowrap;
         white-space: nowrap;
     }
 
@@ -123,4 +144,102 @@ button {
         cursor: pointer;
     }
 }
+
+#group-component {
+    #header {
+        @extend .card-panel, .white, .center;
+        height: 150px;
+        width: 100%;
+        margin-top: -32px;
+        color: gainsboro;
+        img {
+
+        }
+    }
+
+    #details {
+        @extend .row;
+
+        #members-list-container {
+            @extend .col, .s12, .l5, .card, .white;
+            height: 250px;
+
+            #members-title {
+
+            }
+
+            #list-container {
+                height: 75%;
+                width: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+
+                #list {
+                    @extend .collection;
+                    li {
+                        @extend .collection-item, .row;
+
+                        #image-container {
+                            @extend .col, .s2, .l2;
+                            img {
+                                @extend .circle;
+                                height: 30px;
+                                width: 30px;
+                                position: absolute;
+                                left: 15px;
+                            }
+                        }
+
+                        #name {
+                            @extend .row, .s10, .l10;
+                            span {
+                                position: absolute;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #right-container {
+            @extend .col, .s12, .l7;
+
+            .content {
+                position: relative;
+                right: -10px;
+                padding: 1px 10px;
+            }
+
+            #description {
+                @extend .card-panel, .white;
+                height: 250px;
+            }
+
+            .topic-container {
+                @extend .card, .white;
+            }
+
+        }
+
+
+    }
+
+}
+
+.tasks-container {
+    @extend .card, .white;
+
+    .input-field {
+        i {
+            margin-top: 10px;
+
+        }
+    }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 
